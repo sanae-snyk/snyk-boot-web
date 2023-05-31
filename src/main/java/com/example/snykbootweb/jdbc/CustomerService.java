@@ -57,10 +57,10 @@ public class CustomerService {
 
     public List<Customer> getAllByLastName (String lastName) {
         List<Customer> customers = jdbcTemplate.query(
-                "SELECT id, first_name, last_name FROM customers WHERE last_name = '?'",
+                "SELECT id, first_name, last_name FROM customers WHERE last_name = '"+lastName+"'",
                 (rs, rowNum) -> new Customer((int) rs.getLong("id"),
                         rs.getString("first_name"),
-                        rs.getString("last_name")),lastName);
+                        rs.getString("last_name")));
 
         return customers;
     }
